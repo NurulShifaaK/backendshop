@@ -30,3 +30,37 @@ export const getSingleProduct=async(req,res)=>{
         product,
     })
 }
+
+//update product --Admin
+export const updateProduct=async(req,res)=>{
+ const id=req.params.id;
+
+    const updatedProduct=await Product.findByIdAndUpdate(id,req.body,{new:true,runValidators:true,});
+     if(!updatedProduct){
+        return res.status(500).json({
+            success:false,
+            message:"Product not found",
+        });
+    }
+    res.status(200).json({
+        success:true,
+        updatedProduct,
+    })
+}
+
+//delete product --Admin
+
+export const deleteProduct=async(req,res)=>{
+    const id=req.params.id;
+    const deletedProduct=await Product.findByIdAndDelete(id);   
+    if(!deletedProduct){
+        return res.status(500).json({
+            success:false,
+            message:"Product not found",
+        });
+    }           
+    res.status(200).json({
+        success:true,
+        message:"Product deleted successfully",
+    })
+}
