@@ -3,23 +3,23 @@ import mongoose from "mongoose";
 const productSchema=new mongoose.Schema({
     name:{
         type:String,
-        required:[true,"Please enter product name"],
+        required:[true,"Please enter name"],
     },
     description:{
         type:String,
-        required:[true,"Please enter product description"],
+        required:[true,"Please enter description"],
+    },
+    Age:{
+        type:Number,
+        required:[true,"Please enter age"],
+        maxLength:[5,"age cannot exceed 5 digit"],
     },
 
-    price:{
-        type:Number,
-        required:[true,"Please enter product price"],
-        maxLength:[7,"price cannot exceed 7 digit"],
+    Bloodgroup:{
+        type:String,
+        required:[true,"Please enter blood group"],
     },
 
-    ratings:{
-        type:Number,
-        default:0,
-    },
     image:[
      {
         public_id:{
@@ -33,29 +33,37 @@ const productSchema=new mongoose.Schema({
      },
     ],
 
-      category:{
+    Location:{
         type:String,
-        required:[true,"Please enter product category"],
+        required:[true,"Please enter Location"],
     },
 
-      stock:{
+    PhoneNo:{
         type:Number,
-        required: [true,"Please enter product stock"],
-        default: 1,
+        required: [true,"Please enter phone number"],
+        maxLength:[10,"phone number cannot exceed 10 digit"],
     },
 
-    numOfReviews:{
-        type:Number,
-        default:0,
+    Availability:{
+        type:Date,
+        default:Date.now,
     },
 
-    reviews:[
+ category: {
+  type: String,
+  enum: ["hospital", "individual"], 
+  default: "individual",
+  required: true,
+},
+
+reviews:[
         {
             name:{type:String,required:true},
             rating:{type:Number,required:true},
             comment:{type:String,required:true},
         }
     ],
+
     createdAt:{
       type:Date,
       default:Date.now,  
