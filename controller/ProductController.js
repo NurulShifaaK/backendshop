@@ -1,4 +1,5 @@
 import Product from "../models/ProductModel.js";
+import APIHelper from "../helper/Apihelper.js";
 //create product
 export const addProduct =async(req,res)=>{
 const product = await Product.create(req.body);
@@ -8,8 +9,16 @@ res.status(201).json({
 }
 
 //get all products
+
+//http://localhost:8000/api/v1/products?keyword=martha
+
 export const getAllProduct=async(req,res)=>{
-    const products=await Product.find();
+ //console.log(req.query.keyword);
+ // const products=await Product.find();
+
+   const apihelper=new APIHelper(Product.find(),req.query).search();
+   console.log(apihelper);
+    const products=await apihelper.query;
     res.status(200).json({
         success:true,
         products,});

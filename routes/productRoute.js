@@ -1,6 +1,6 @@
 import express from "express";
 import { getAllProduct, getSingleProduct  , addProduct, updateProduct , deleteProduct} from "../controller/ProductController.js";
-
+import { verifyUser } from "../helper/userAuth.js";
 const router=express.Router();
 
 router.route("/products").get(getAllProduct).post(addProduct)
