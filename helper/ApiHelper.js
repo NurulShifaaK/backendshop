@@ -1,4 +1,4 @@
-class APIHelper{
+class ApiHelper{
     constructor(query,queryStr){
         this.query=query; //mongodb
         this.queryStr=queryStr; //url
@@ -16,4 +16,4 @@ class APIHelper{
     filter(){}
     pagination(){}
 }
-export default APIHelper;
+export default ApiHelper;

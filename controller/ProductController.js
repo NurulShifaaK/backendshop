@@ -9,14 +9,10 @@ res.status(201).json({
 }
 
 //get all products
-
-//http://localhost:8000/api/v1/products?keyword=martha
-
 export const getAllProduct=async(req,res)=>{
- //console.log(req.query.keyword);
- // const products=await Product.find();
 
-   const apihelper=new APIHelper(Product.find(),req.query).search();
+ // const products=await Product.find();
+   const apihelper=new ApiHelper(Product.find(),req.query).search();
    console.log(apihelper);
     const products=await apihelper.query;
     res.status(200).json({
