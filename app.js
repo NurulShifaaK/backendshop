@@ -6,13 +6,15 @@ import cookieParser from "cookie-parser";
 const app=express();
 // app.use(cors());
 
-app.use(
+ app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend
-    credentials: true,               // allow cookies
+    origin: [
+      "http://localhost:5173",
+      "https://blooddonationproject-kffq.vercel.app",
+    ],
+    credentials: true,
   })
 );
-
 
 app.use(express.json());
 app.use(cookieParser());
