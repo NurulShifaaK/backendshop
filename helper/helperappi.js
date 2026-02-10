@@ -1,4 +1,4 @@
-class ApiHelper{
+class helperappi{
     constructor(query,queryStr){
         this.query=query; //mongodb
         this.queryStr=queryStr; //url
@@ -16,4 +16,4 @@ class ApiHelper{
     filter(){}
     pagination(){}
 }
-export default ApiHelper;
+export default helperappi;

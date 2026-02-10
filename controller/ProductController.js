@@ -1,5 +1,6 @@
 import Product from "../models/ProductModel.js";
-import APIHelper from "../helper/Apihelper.js";
+import APIHelper from "../helper/helperappi.js";
+
 //create product
 export const addProduct =async(req,res)=>{
 const product = await Product.create(req.body);
@@ -12,8 +13,9 @@ res.status(201).json({
 export const getAllProduct=async(req,res)=>{
 
  // const products=await Product.find();
-   const apihelper=new APIHelper(Product.find(),req.query).search();
-    const products=await apihelper.query;
+const apiHelper = new APIHelper(Product.find(), req.query).search();
+const products = await apiHelper.query;
+
     res.status(200).json({
         success:true,
         products,});
@@ -68,3 +70,4 @@ export const deleteProduct=async(req,res)=>{
         message:"Product deleted successfully",
     })
 }
+
